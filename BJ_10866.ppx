@@ -5,7 +5,7 @@
 			<property name="Left" type="integer">-11</property>
 			<property name="Top" type="integer">-45</property>
 			<property name="Right" type="integer">1687</property>
-			<property name="Bottom" type="integer">642</property>
+			<property name="Bottom" type="integer">654</property>
 			<property name="Maximized" type="integer">1</property>
 			<property name="Active" type="integer">1</property>
 		</category>

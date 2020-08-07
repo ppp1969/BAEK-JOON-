@@ -99,15 +99,16 @@ void push_first(Deque * pdeq, int data){
 	Node * newNode = (Node *)malloc(sizeof(Node));
 	newNode->data = data;
 	pdeq->count++;
-	newNode->next = pdeq->head;
+
 	if(pdeq->head == NULL){
+		pdeq->head = newNode;
 		pdeq->tail = newNode;
 	}
 	else{
-		pdeq->head->prev = newNode;
+		newNode->next=pdeq->head;
+		pdeq->head->prev=newNode;
+		pdeq->head=newNode;
 	}
-	pdeq->head = newNode;
-	newNode->prev=NULL;
 }
 void push_back(Deque * pdeq, int data){
 	Node * newNode = (Node *)malloc(sizeof(Node));
@@ -117,43 +118,49 @@ void push_back(Deque * pdeq, int data){
 	newNode->prev = pdeq->tail;
 	if(pdeq->head == NULL){
 		pdeq->head = newNode;
+		pdeq->tail = newNode;
 	}
 	else{
-		pdeq->tail->next = newNode;
+		pdeq->tail->next=newNode;
+		newNode->prev=pdeq->tail;
+		pdeq->tail=newNode;
 	}
-	newNode->next=NULL;
-	pdeq->tail = newNode;
 }
 
 int pop_first(Deque * pdeq){
 	if (empty(pdeq))
 		return -1;
 
-	Node * rnode = pdeq->head;
-	int rdata = rnode->data;
+	int rdata = pdeq->head->data;
 
-	pdeq->head = pdeq->head->next;
-	if (pdeq->head == NULL) 
+	if(pdeq->count==1){
+		pdeq->head = NULL;
 		pdeq->tail = NULL;
-	else 
-		pdeq->head->prev = NULL;
+	}
+	else{
+		(pdeq->head->next)->prev=NULL;
+		pdeq->head=pdeq->head->next;
+	}
 	
-	free(rnode);
+	pdeq->count--;
+
 	return rdata;
 }
 int pop_back(Deque *pdeq){
 	if (empty(pdeq))
 		return -1;
-	Node * rnode = pdeq->tail;
-	int rdata = rnode->data;
-
-	pdeq->tail = pdeq->tail->prev;
-	if (pdeq->tail == NULL) 
-		pdeq->head = NULL;
 	
-	else 
-		pdeq->tail->next = NULL;
-	free(rnode);
+	int rdata = pdeq->tail->data;
+	if(pdeq->count==1){		//1개 들어있을 때, 오류남.
+		pdeq->head = NULL;
+		pdeq->tail = NULL;
+	}
+	else{
+		(pdeq->tail->prev)->next=NULL;
+		pdeq->tail=pdeq->tail->prev;
+	}
+	pdeq->count--;
+
 	return rdata;
 }
 int empty(Deque * pdeq){
