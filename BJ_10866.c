@@ -1,33 +1,33 @@
 /*
-¹®Á¦	µ¦±¸Çö 55% - ¹è¿­·Î ÇÏ¸é ºñÈ¿À²ÀûÀÌ°í ½Ã°£ÃÊ°úµÇ±â¿¡ linked list·Î ±¸Çö
-				++Ãß°¡ ´Ü¼ø¿¬°á¸®½ºÆ®·Î ±¸ÇöÇØµµ ½Ã°£ÀÌ ÃÊ°úµÊ -> pop_back°úÁ¤¿¡¼­ ½Ã°£º¹Àâµµ°¡ O¸¸Å­ °É¸².
-				++ÀÌÁß¿¬°á¸®½ºÆ®·Î ±¸ÇöÇØ¾ßÇÔ.
+ë¬¸ì œ	ë±êµ¬í˜„ 55% - ë°°ì—´ë¡œ í•˜ë©´ ë¹„íš¨ìœ¨ì ì´ê³  ì‹œê°„ì´ˆê³¼ë˜ê¸°ì— linked listë¡œ êµ¬í˜„
+				++ì¶”ê°€ ë‹¨ìˆœì—°ê²°ë¦¬ìŠ¤íŠ¸ë¡œ êµ¬í˜„í•´ë„ ì‹œê°„ì´ ì´ˆê³¼ë¨ -> pop_backê³¼ì •ì—ì„œ ì‹œê°„ë³µìž¡ë„ê°€ O(n)ë§Œí¼ ê±¸ë¦¼.
+				++ì´ì¤‘ì—°ê²°ë¦¬ìŠ¤íŠ¸ë¡œ êµ¬í˜„í•´ì•¼í•¨.
 
-Âü°í¿µ»ó ÁÖ¼Ò : https://www.youtube.com/watch?v=SnUo22WcV54
+ì°¸ê³ ì˜ìƒ ì£¼ì†Œ : https://www.youtube.com/watch?v=SnUo22WcV54
 
-Á¤¼ö¸¦ ÀúÀåÇÏ´Â µ¦(Deque)¸¦ ±¸ÇöÇÑ ´ÙÀ½, ÀÔ·ÂÀ¸·Î ÁÖ¾îÁö´Â ¸í·ÉÀ» Ã³¸®ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+ì •ìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” ë±(Deque)ë¥¼ êµ¬í˜„í•œ ë‹¤ìŒ, ìž…ë ¥ìœ¼ë¡œ ì£¼ì–´ì§€ëŠ” ëª…ë ¹ì„ ì²˜ë¦¬í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.
 
-¸í·ÉÀº ÃÑ ¿©´ü °¡ÁöÀÌ´Ù.
+ëª…ë ¹ì€ ì´ ì—¬ëŸ ê°€ì§€ì´ë‹¤.
 
-push_front X: Á¤¼ö X¸¦ µ¦ÀÇ ¾Õ¿¡ ³Ö´Â´Ù.
-push_back X: Á¤¼ö X¸¦ µ¦ÀÇ µÚ¿¡ ³Ö´Â´Ù.
-pop_front: µ¦ÀÇ °¡Àå ¾Õ¿¡ ÀÖ´Â ¼ö¸¦ »©°í, ±× ¼ö¸¦ Ãâ·ÂÇÑ´Ù. ¸¸¾à, µ¦¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â -1À» Ãâ·ÂÇÑ´Ù.
-pop_back: µ¦ÀÇ °¡Àå µÚ¿¡ ÀÖ´Â ¼ö¸¦ »©°í, ±× ¼ö¸¦ Ãâ·ÂÇÑ´Ù. ¸¸¾à, µ¦¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â -1À» Ãâ·ÂÇÑ´Ù.
-size: µ¦¿¡ µé¾îÀÖ´Â Á¤¼öÀÇ °³¼ö¸¦ Ãâ·ÂÇÑ´Ù.
-empty: µ¦ÀÌ ºñ¾îÀÖÀ¸¸é 1À», ¾Æ´Ï¸é 0À» Ãâ·ÂÇÑ´Ù.
-front: µ¦ÀÇ °¡Àå ¾Õ¿¡ ÀÖ´Â Á¤¼ö¸¦ Ãâ·ÂÇÑ´Ù. ¸¸¾à µ¦¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â -1À» Ãâ·ÂÇÑ´Ù.
-back: µ¦ÀÇ °¡Àå µÚ¿¡ ÀÖ´Â Á¤¼ö¸¦ Ãâ·ÂÇÑ´Ù. ¸¸¾à µ¦¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â -1À» Ãâ·ÂÇÑ´Ù.
-ÀÔ·Â
-Ã¹Â° ÁÙ¿¡ ÁÖ¾îÁö´Â ¸í·ÉÀÇ ¼ö N (1 ¡Â N ¡Â 10,000)ÀÌ ÁÖ¾îÁø´Ù. µÑÂ° ÁÙºÎÅÍ N°³ÀÇ ÁÙ¿¡´Â ¸í·ÉÀÌ ÇÏ³ª¾¿ ÁÖ¾îÁø´Ù. ÁÖ¾îÁö´Â Á¤¼ö´Â 1º¸´Ù Å©°Å³ª °°°í, 100,000º¸´Ù ÀÛ°Å³ª °°´Ù. ¹®Á¦¿¡ ³ª¿ÍÀÖÁö ¾ÊÀº ¸í·ÉÀÌ ÁÖ¾îÁö´Â °æ¿ì´Â ¾ø´Ù.
+push_front X: ì •ìˆ˜ Xë¥¼ ë±ì˜ ì•žì— ë„£ëŠ”ë‹¤.
+push_back X: ì •ìˆ˜ Xë¥¼ ë±ì˜ ë’¤ì— ë„£ëŠ”ë‹¤.
+pop_front: ë±ì˜ ê°€ìž¥ ì•žì— ìžˆëŠ” ìˆ˜ë¥¼ ë¹¼ê³ , ê·¸ ìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤. ë§Œì•½, ë±ì— ë“¤ì–´ìžˆëŠ” ì •ìˆ˜ê°€ ì—†ëŠ” ê²½ìš°ì—ëŠ” -1ì„ ì¶œë ¥í•œë‹¤.
+pop_back: ë±ì˜ ê°€ìž¥ ë’¤ì— ìžˆëŠ” ìˆ˜ë¥¼ ë¹¼ê³ , ê·¸ ìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤. ë§Œì•½, ë±ì— ë“¤ì–´ìžˆëŠ” ì •ìˆ˜ê°€ ì—†ëŠ” ê²½ìš°ì—ëŠ” -1ì„ ì¶œë ¥í•œë‹¤.
+size: ë±ì— ë“¤ì–´ìžˆëŠ” ì •ìˆ˜ì˜ ê°œìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤.
+empty: ë±ì´ ë¹„ì–´ìžˆìœ¼ë©´ 1ì„, ì•„ë‹ˆë©´ 0ì„ ì¶œë ¥í•œë‹¤.
+front: ë±ì˜ ê°€ìž¥ ì•žì— ìžˆëŠ” ì •ìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤. ë§Œì•½ ë±ì— ë“¤ì–´ìžˆëŠ” ì •ìˆ˜ê°€ ì—†ëŠ” ê²½ìš°ì—ëŠ” -1ì„ ì¶œë ¥í•œë‹¤.
+back: ë±ì˜ ê°€ìž¥ ë’¤ì— ìžˆëŠ” ì •ìˆ˜ë¥¼ ì¶œë ¥í•œë‹¤. ë§Œì•½ ë±ì— ë“¤ì–´ìžˆëŠ” ì •ìˆ˜ê°€ ì—†ëŠ” ê²½ìš°ì—ëŠ” -1ì„ ì¶œë ¥í•œë‹¤.
+ìž…ë ¥
+ì²«ì§¸ ì¤„ì— ì£¼ì–´ì§€ëŠ” ëª…ë ¹ì˜ ìˆ˜ N (1 â‰¤ N â‰¤ 10,000)ì´ ì£¼ì–´ì§„ë‹¤. ë‘˜ì§¸ ì¤„ë¶€í„° Nê°œì˜ ì¤„ì—ëŠ” ëª…ë ¹ì´ í•˜ë‚˜ì”© ì£¼ì–´ì§„ë‹¤. ì£¼ì–´ì§€ëŠ” ì •ìˆ˜ëŠ” 1ë³´ë‹¤ í¬ê±°ë‚˜ ê°™ê³ , 100,000ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ë‹¤. ë¬¸ì œì— ë‚˜ì™€ìžˆì§€ ì•Šì€ ëª…ë ¹ì´ ì£¼ì–´ì§€ëŠ” ê²½ìš°ëŠ” ì—†ë‹¤.
 
-Ãâ·Â
-Ãâ·ÂÇØ¾ßÇÏ´Â ¸í·ÉÀÌ ÁÖ¾îÁú ¶§¸¶´Ù, ÇÑ ÁÙ¿¡ ÇÏ³ª¾¿ Ãâ·ÂÇÑ´Ù.
+ì¶œë ¥
+ì¶œë ¥í•´ì•¼í•˜ëŠ” ëª…ë ¹ì´ ì£¼ì–´ì§ˆ ë•Œë§ˆë‹¤, í•œ ì¤„ì— í•˜ë‚˜ì”© ì¶œë ¥í•œë‹¤.
 */
 
 #include<stdio.h>
-#include<string.h>  //¹®ÀÚ¿­ ºñ±³¸¦ À§ÇØ »ç¿ë
-#include<stdlib.h>	//³ëµå»ç¿ë.
-typedef struct _node {	//´Ü¼ø ¿¬°á ¸®½ºÆ®·Î ±¸Çö
+#include<string.h>  //ë¬¸ìžì—´ ë¹„êµë¥¼ ìœ„í•´ ì‚¬ìš©
+#include<stdlib.h>	//ë…¸ë“œì‚¬ìš©.
+typedef struct _node {	//ë‹¨ìˆœ ì—°ê²° ë¦¬ìŠ¤íŠ¸ë¡œ êµ¬í˜„
 	int data;
 	struct _node * next;
 	struct _node * prev;
@@ -54,13 +54,13 @@ int main(void){
 	Deque dq;
 	deque_init(&dq);
 	char command[20];
-	scanf("%d ",&num);	//scanfÀÇ ¸¶Áö¸·¿¡ ¿£ÅÍ°¡ ¹öÆÛ¿¡ ³²À½ ±×·¡¼­ %d µÚ¿¡ ¶ç¿ìÁö ¾ÊÀ¸¸é command °³¼ö°¡ -1È¸ ½ÇÇàµÊ.
-						//get°è¿­ ÇÔ¼öµµ ¹öÆÛ¿¡¼­ °¡Á®¿À±â ¶§¹®ÀÓ.!!
+	scanf("%d ",&num);	//scanfì˜ ë§ˆì§€ë§‰ì— ì—”í„°ê°€ ë²„í¼ì— ë‚¨ìŒ ê·¸ëž˜ì„œ %d ë’¤ì— ë„ìš°ì§€ ì•Šìœ¼ë©´ command ê°œìˆ˜ê°€ -1íšŒ ì‹¤í–‰ë¨.
+						//getê³„ì—´ í•¨ìˆ˜ë„ ë²„í¼ì—ì„œ ê°€ì ¸ì˜¤ê¸° ë•Œë¬¸ìž„.!!
 
 	for(int i=0; i<num; i++){
-		gets(command);	//°ø¹éÀÌ ÀÖÀ¸¹Ç·Î scanfº¸´Ù getsÇÔ¼ö°¡ ÀûÀýÇÔ.
+		gets(command);	//ê³µë°±ì´ ìžˆìœ¼ë¯€ë¡œ scanfë³´ë‹¤ getsí•¨ìˆ˜ê°€ ì ì ˆí•¨.
 		if(strstr(command,"push_front")){
-			sscanf(command,"push_front %d",&in_data);	//command¿¡¼­ ¼ýÀÚ°ª »©¿À±â.
+			sscanf(command,"push_front %d",&in_data);	//commandì—ì„œ ìˆ«ìžê°’ ë¹¼ì˜¤ê¸°.
 			push_first(&dq, in_data);
 		}
 		else if(strstr(command,"push_back")){
@@ -151,7 +151,7 @@ int pop_back(Deque *pdeq){
 		return -1;
 	
 	int rdata = pdeq->tail->data;
-	if(pdeq->count==1){		//1°³ µé¾îÀÖÀ» ¶§, ¿À·ù³².
+	if(pdeq->count==1){		//1ê°œ ë“¤ì–´ìžˆì„ ë•Œ, ì˜¤ë¥˜ë‚¨.
 		pdeq->head = NULL;
 		pdeq->tail = NULL;
 	}
